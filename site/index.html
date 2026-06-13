@@ -8,7 +8,24 @@
   <link rel="preconnect" href="https://www.openstreetmap.org" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="auth-locked">
+  <section class="auth-gate" aria-labelledby="auth-title" role="dialog" aria-modal="true">
+    <div class="auth-card">
+      <span class="auth-mark">M26</span>
+      <p class="eyebrow">Private volunteer guide</p>
+      <h1 id="auth-title">Enter the team password</h1>
+      <p>This guide is shared for the Malawi 2026 volunteer group.</p>
+      <form data-auth-form>
+        <label for="site-password">Password</label>
+        <div class="auth-input-row">
+          <input id="site-password" name="password" type="password" autocomplete="current-password" inputmode="text" required autofocus />
+          <button class="button primary" type="submit">Open guide</button>
+        </div>
+        <p class="auth-error" data-auth-error aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="hero" id="top">

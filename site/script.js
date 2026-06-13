@@ -1,3 +1,36 @@
+const authForm = document.querySelector('[data-auth-form]');
+const authInput = document.querySelector('#site-password');
+const authError = document.querySelector('[data-auth-error]');
+const authStorageKey = 'malawi-2026-authenticated';
+const authPassword = 'joa';
+
+function unlockGuide() {
+  document.body.classList.remove('auth-locked');
+}
+
+if (localStorage.getItem(authStorageKey) === 'true') {
+  unlockGuide();
+}
+
+if (authForm && authInput) {
+  authForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const submitted = authInput.value.trim().toLowerCase();
+
+    if (submitted === authPassword) {
+      localStorage.setItem(authStorageKey, 'true');
+      if (authError) authError.textContent = '';
+      unlockGuide();
+      return;
+    }
+
+    localStorage.removeItem(authStorageKey);
+    if (authError) authError.textContent = 'That password did not work. Please try again.';
+    authInput.select();
+    authInput.focus();
+  });
+}
+
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('#nav-links');
 const navBackdrop = document.querySelector('[data-nav-close]');
