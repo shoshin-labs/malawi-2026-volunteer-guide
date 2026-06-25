@@ -61,10 +61,10 @@ if (navToggle && navLinks) {
   });
 }
 
-const checklist = document.querySelector('[data-checklist]');
+const checklistContainers = document.querySelectorAll('[data-checklist]');
 const storagePrefix = 'malawi-2026-check-';
 
-if (checklist) {
+checklistContainers.forEach((checklist) => {
   checklist.querySelectorAll('input[type="checkbox"]').forEach((input) => {
     const key = input.dataset.key;
     if (!key) return;
@@ -73,4 +73,4 @@ if (checklist) {
       localStorage.setItem(storagePrefix + key, String(input.checked));
     });
   });
-}
+});
